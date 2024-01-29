@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        
+        body {
+	background: #1690A7;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+	flex-direction: column;
+}
+
+*{
+	font-family: sans-serif;
+	box-sizing: border-box;
+}
+
+form {
+	width: 500px;
+	border: 2px solid #ccc;
+	padding: 30px;
+	background: #fff;
+	border-radius: 15px;
+}
+
+h2 {
+	text-align: center;
+	margin-bottom: 40px;
+}
+
+input {
+	display: block;
+	border: 2px solid #ccc;
+	width: 95%;
+	padding: 10px;
+	margin: 10px auto;
+	border-radius: 5px;
+}
+label {
+	color: #888;
+	font-size: 18px;
+	padding: 10px;
+}
+
+button {
+	float: right;
+	background: #555;
+	padding: 10px 15px;
+	color: #fff;
+	border-radius: 5px;
+	margin-right: 10px;
+	border: none;
+}
+button:hover{
+	opacity: .7;
+}
+.error {
+   background: #F2DEDE;
+   color: #A94442;
+   padding: 10px;
+   width: 95%;
+   border-radius: 5px;
+   margin: 20px auto;
+}
+
+h1 {
+	text-align: center;
+	color: #fff;
+}
+
+a {
+	float: right;
+	background: #555;
+	padding: 10px 15px;
+	color: #fff;
+	border-radius: 5px;
+	margin-right: 10px;
+	border: none;
+	text-decoration: none;
+}
+a:hover{
+	opacity: .7;
+}
+    </style>
+</head>
+<body>
+    <h1 style="color: aliceblue;">Prove You are my booboobobobo</h1>
+
+
+    <form action="login.php" method="post">
+        <h2>LOGIN</h2>
+        <?php if (isset($_GET['error'])) { ?>
+            <p class="error"><?php echo $_GET['error']; ?></p>
+        <?php } ?>
+        <label>User Phone number</label>
+        <input type="text" name="uname" placeholder="User Name"><br>
+
+        <label>User bobo koun hai</label>
+        <input type="password" name="password" placeholder="Password"><br>
+
+        <button type="submit" style="color: white; background: #A94442;"><a href="./second.html" style="background: none;"> Login</button> </a>
+    </form>
+    
+    
+</body>
+<script>
+    "use strict";
+
+let loginform = document.forms.login;
+loginform.addEventListener("submit", checkLogin);
+let users = [];
+let pwords = [];
+users = ["Administrator", "Manager", "Cleric", "Scribe"];
+pwords = ["Password01", "Password", "Admin", "P@ssword"];
+
+//*** NOTE: the password for each username is specific. Use the the alignment of the data in the table above (i.e. the password for the Administrator account is Password01, etc.). ***
+
+
+function checkLogin() {
+  var usernameInput = loginform.getElementById("Username").value;
+  var pwInput = loginform.getElementById("Password").value;
+
+  //.includes is what we need for the array checking if statements
+
+  //For Loop 1
+  for (usernameInput in users) {
+    if (!users.includes(usernameInput)) {
+      window.event.preventDefault();
+      alert("Your username is incorrect. Please try again.")
+      loginform.user.focus();
+      return false;
+    } else {
+      //For Loop 2
+      for (pwInput in pwords) {
+        if (!pwords.includes(pwInput)) {
+          window.event.preventDefault();
+          alert("Your password is incorrect. Please try again.")
+          loginform.pword.focus();
+          return false;
+        }
+      }
+    }
+  }
+}
+</script>
+</html>
